@@ -1,0 +1,59 @@
+{
+  "name": "my-vscode-extension",
+  "displayName": "My VS Code Extension",
+  "description": "A VS Code extension that integrates with AI services to analyze project files.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onCommand:extension.analyzeProject"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.analyzeProject",
+        "title": "Analyze Project"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "My Extension Configuration",
+      "properties": {
+        "myExtension.exclude": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": ["node_modules", "build"],
+          "description": "Files and folders to exclude from analysis."
+        },
+        "myExtension.aiService": {
+          "type": "string",
+          "enum": ["Grok", "Deepseek"],
+          "default": "Grok",
+          "description": "Select the AI service to use for analysis."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.3",
+    "@types/node": "^16.9.1",
+    "@types/vscode": "^1.60.0",
+    "eslint": "^7.32.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shubham781/my-vscode-extension.git"
+  },
+  "dependencies": {
+  "axios": "^1.8.3"
+}
+}
